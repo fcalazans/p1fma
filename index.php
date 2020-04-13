@@ -1,42 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include 'includes/header.php';?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='//fonts.googleapis.com/css?family=Roboto:300,400,700,400italic,700italic' rel='stylesheet'
-        type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
-    <title>DCS | Home</title>
-</head>
-
-<body>
-    <div class="main-wrapper">
-        <?php include 'includes/header.php';?>
-        <div class="main-frame">
-            <?php // Create a handle
-                $handle = opendir('data');
-
-                // Open directory and read contents.
-                while (false !== ($file = readdir($handle))) {
-
-                    // Check if file extension is valid to read
-                    if (is_file('data/' . $file)) {
-                        $path_extension = pathinfo($file);
-                        if ($path_extension['extension'] != 'html') {
-                            echo "<p> data $file : INVALID FILE EXTENSION- should be .html</p>";
-                        }
-                        if ($path_extension['extension'] == 'html') {
-                            $fileNames[] = pathinfo($file, PATHINFO_FILENAME);
-                            $files[] = $file;
-                        }
-                    }
-                }
-                // Close handle.
-                closedir($handle);
-            ?>
-        </div>
-    </div>
+<h1>Home</h1>
+<hr />
+<br>
+<p>
+    The Department of Computer Science and Information Systems at Birkbeck is one of the first computing
+    departments established in the UK, celebrating our 60th anniversary in 2017. We provide a stimulating
+    teaching and research environment for both part-time and full-time students, and a friendly, inclusive
+    space for learning, working and collaborating.
+</p>
+<br>
+<hr />
+</div>
+</div>
 </body>
 
 </html>

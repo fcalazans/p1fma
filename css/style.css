@@ -7,9 +7,6 @@ body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-/* header {
-  display: grid;
-} */
 .header-bar {
   background-color: #2c4559;
   color: #fff;
@@ -71,4 +68,8 @@ input {
 .main-frame {
   padding: 1em;
   /* font-weight: 100; */
+}
+h1,
+p {
+  color: #2c4559;
 }
