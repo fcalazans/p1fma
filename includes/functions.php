@@ -1,9 +1,9 @@
-<!-- Any change to start -->
 <?php
 
-    function makeForm($form) {
+// Function that generate a form according to the parameter passed.
+function makeForm($form) {
 
-        $loginForm = '<div class="form">
+    $loginForm = '<div class="form">
     <label for="username">Username</label>
     <input placeholder="Username" type="text" name="username" id="username" value="username">
 
@@ -12,23 +12,27 @@
 
     <input class="admin-btn" type="submit" name="submitdetails" value="login">';
 
-        if ($form === "loginForm") {
-            return $loginForm;
-        } else {
+    if ($form === "loginForm") {
+        return $loginForm;
+    } else {
 
-            return $form;
-        }
+        return $form;
     }
+};
 
-    //     function displayPage($page) {
+// Function that take a 2 parameters and return H tag.
+function makeHeading($str, $num) {
+    echo "<h" . $num . ">" . $str . "</h" . $num . ">";
+};
 
-    //         $contact = '';
+// Function that takes 1 parameter and display the body of the intranet page.
+function displayBody($data) {
 
-    //         if ($page == "about") {
-    //             return $page;
-    //         } elseif ($page == "contact") {
-    //             return $contact;
-    //         } elseif ($page == "services") {
-    //             return $services;
-//     }
-// }
+    $handle = fopen($data, 'r');
+
+    while (!feof($handle)) { // While is not the end of the file.
+        $name = fgets($handle); // Get the content of the page until EOL.
+        echo $name;
+    }
+    fclose($handle);
+};
