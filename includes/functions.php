@@ -2,7 +2,6 @@
 
 // Function that generate a form according to the parameter passed.
 function makeForm($form) {
-
     $loginForm = '<div class="form">
     <label for="username">Username</label>
     <input placeholder="Username" type="text" name="username" id="username" value="username">
@@ -32,7 +31,33 @@ function displayBody($data) {
 
     while (!feof($handle)) { // While is not the end of the file.
         $name = fgets($handle); // Get the content of the page until EOL.
-        echo $name;
+        return $name;
     }
     fclose($handle);
 };
+
+# Initialization.
+// Define arrays to hold data from each file.
+$fileNames = array();
+$files = array();
+
+// Create a handle
+$handle = opendir('data');
+
+// Open directory and read contents.
+while (false !== ($file = readdir($handle))) {
+
+    // Check if file extension is valid to read
+    if (is_file('data/' . $file)) {
+        $path_extension = pathinfo($file);
+        if ($path_extension['extension'] != 'html') {
+            echo "<p>data $file : INVALID FILE EXTENSION- should be .txt</p>";
+        }
+        if ($path_extension['extension'] == 'html') {
+            $fileNames[] = pathinfo($file, PATHINFO_FILENAME);
+            $files[] = $file;
+        }
+    }
+}
+print_r($files);
+print_r($fileNames);

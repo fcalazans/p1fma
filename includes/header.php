@@ -1,5 +1,5 @@
-<?php require_once 'includes/functions.php';
-    $login = makeForm("loginForm");
+<?php
+$login = makeForm("loginForm");
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,6 @@ echo '
         <li><a href="intranet.php">Intranet</a></li>
     </ul>
 </nav>
-<div class="main-frame">'?>
+<div class="main-frame">';
 
-<!-- DCS | $title </title> -->
+// require_once 'includes/functions.php';

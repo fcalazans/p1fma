@@ -1,30 +1,24 @@
 <?php
-    require_once 'includes/functions.php';
-    include 'includes/header.php';
-    $php = 'data/P1results.html';
-    $dt = 'data/P1results.html';
-    $pfp = 'data/PfPresults.html';
-    $title = 'Intranet';
+require_once 'includes/functions.php';
+$title = 'Intranet';
+include 'includes/header.php';
+$links = array();
+$php = 'data/P1results.html';
+$dt = 'data/DTresults.html';
+$pfp = 'data/PfPresults.html';
+$user = 'Fabio';
+makeHeading($title, 1);
+$body = displayBody($dt);
 
-    makeHeading($title, 1);
+$index = '<h2>Module Results</h2><span>Welcome ' . $user . ' You are logged in.</span>
+<div class="links">
+<a href="index.php?body=P1results.html">Web Programming using PHP - P1 Results</a>
+<a href="#">Introduction to Database Technology - DT Results</a>
+<a href="#">Problem Solving for Programming - PfP Results</a>
+</div>
+</div>
+</div>
+</body>
 
-    $body = displayBody($php);
-
-    if ($body) {
-        # code...
-    }
-    ;
-
-?>
-
-<h2>Module Results</h2><span>Welcome User - You are logged in.</span>
-<ul>
-    <li><a href="">Web Programming using PHP - P1 Results</a></li>
-    <li><a href="#">Introduction to Database Technology - DT Results</a></li>
-    <li><a href="#">Problem Solving for Programming - PfP Results</a></li>
-</ul>
-
-
-<?php
-
-?>
+</html>';
+echo $index;

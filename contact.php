@@ -1,6 +1,7 @@
-<?php include 'includes/header.php';
+<?php
 require_once 'includes/functions.php';
 $title = 'Contact';
+include 'includes/header.php';
 makeHeading($title, 1);
 
 echo '

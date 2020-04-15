@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/functions.php';
-include 'includes/header.php';
 $title = 'Home';
+include 'includes/header.php';
 
 makeHeading($title, 1);
 echo '
