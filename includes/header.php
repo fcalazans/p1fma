@@ -1,5 +1,5 @@
 <?php
-$login = makeForm("loginForm");
+$login = makeForm("loginForm-header");
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -17,16 +17,17 @@ echo '
 
         <header class="header-bar">
             <a href="index.php"><img class="logo" src="img/logo.svg" alt="DCS Logo"></a>
-            <span>Computer Science Department</span>' . $login . '</header>
-<nav class="main-nav">
-    <ul>
-        <li><a href="index.php"><img src="img/home-btn.svg" alt="Home"></a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
-        <li><a href="services.php">Services</a></li>
-        <li><a href="intranet.php">Intranet</a></li>
-    </ul>
-</nav>
-<div class="main-frame">';
+            <span>Computer Science Department</span>
+            ' . $login . '
+        </header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.php"><img src="img/home-btn.svg" alt="Home"></a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
+                <li><a href="services.php">Services</a></li>
+                <li><a href="login.php">Intranet</a></li>
+            </ul>
+        </nav>';
 
-// require_once 'includes/functions.php';
+// TODO Cite all DCS content used on the paragraph.

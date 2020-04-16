@@ -12,7 +12,7 @@ body {
   color: #fff;
   padding: 0 1em;
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto auto auto;
 }
 
 .header-bar span {
@@ -22,6 +22,7 @@ body {
 
 .main-nav {
   background-color: #d9e0e6;
+  padding-left: 1em;
 }
 .main-nav ul {
   list-style: none;
@@ -47,26 +48,53 @@ body {
   color: white;
 }
 
-.form {
+.loginForm-header {
   font-size: 12px;
   padding: 2.5em 0 0 1rem;
   justify-self: end;
 }
 
-input {
+.loginForm-header input {
   padding: 5px 16px;
   border: none;
   border-radius: 4px;
   margin-right: 10px;
-
   cursor: pointer;
 }
+
+.loginForm-body {
+  font-size: 1em;
+  color: #2c4559;
+  display: grid;
+  grid-template-columns: min-content;
+}
+.loginForm-body label {
+  color: #2c4559;
+  padding-bottom: 5px;
+}
+
+.loginForm-body input {
+  background: #f0f0f0;
+  padding: 5px 16px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin-bottom: 1.5em;
+  cursor: pointer;
+}
+
+.loginForm-body .admin-btn {
+  width: 80px;
+  color: white;
+  background: #4caf50;
+  border: none;
+}
+
 .admin-btn {
   color: white;
   background-color: #4caf50;
 }
 .main-frame {
-  padding: 1em;
+  padding: 1em 2em;
 }
 .main-frame h2 {
   display: inline;
@@ -84,4 +112,15 @@ a {
 .links {
   padding: 1em;
   display: grid;
+}
+a {
+  /* text-decoration: none; */
+  color: #2c4559;
+}
+.links a:hover {
+  background-color: white;
+}
+a:active {
+  background-color: #2c4559;
+  color: white;
 }
