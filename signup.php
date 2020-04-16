@@ -9,7 +9,7 @@
         <section>
             <hr />
             <br>
-            <form action="includes/signup.php" method="post">
+            <form action="includes/signup.inc.php" method="post">
 
                 <label for="titles">Title</label>
                 <select name="title" id="titles">
@@ -34,9 +34,12 @@
                 <input type="text" name="uname" id="user" placeholder="Username" autocomplete="username">
 
                 <label for="pwd">Password</label>
-                <input type="password" name="pass" id="pwd" placeholder="Password" autocomplete="current-password">
+                <input type="password" name="pass" id="pwd" placeholder="Password">
 
-                <button type="submit" name="login-submit" class="admin-btn">Login</button>
+                <label for="pwd-repeat">Repeat Password</label>
+                <input type="password" name="pass-repeat" id="pwd-repeat" placeholder="Repeat Password">
+
+                <button type="submit" name="signup-submit" class="admin-btn">Submit</button>
             </form>
             <br>
             <hr />
@@ -44,7 +47,7 @@
     </div>
 </main>
 
+
 <?php
-    require 'includes/footer.php';
+require 'includes/footer.php';
 ?>
-<!--  Mr. Mrs. Miss Ms -->
