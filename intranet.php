@@ -3,19 +3,17 @@ require_once 'includes/functions.php';
 $title = 'Intranet';
 require 'includes/header.php';
 
-// Body - Main Page
 $php = 'data/P1results.html';
 $dt = 'data/DTresults.html';
 $pfp = 'data/PfPresults.html';
 
 $user = 'Fabio';
-makeHeading($title, 1);
 
 echo '
-div class="main-frame">
+<div class="main-frame">' . makeHeading($title, 1) . '
     <br>
     <hr/>
-    <h2>Module Results</h2>
+    ' . makeHeading('Module Results', 2) . '
     <span>Welcome ' . $user . ' You are logged in.</span>
     <div class="links">
         <a href="?php=true">Web Programming using PHP - P1 Results</a>

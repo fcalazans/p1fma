@@ -1,12 +1,19 @@
 <?php
-require_once 'includes/functions.php';
-$title = 'Home';
-include 'includes/header.php';
+    require_once 'includes/functions.php';
+    $title = 'Home';
+    include 'includes/header.php';
 
-makeHeading($title, 1);
+    makeHeading($title, 1);
 
-echo '
+?>
+<main>
+    <p>You are login</p>
+    <p>You are logout</p>
+</main>
+
+<?php echo '
 <div class="main-frame">
+
     <hr />
     <br>
     <p>

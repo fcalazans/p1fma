@@ -7,27 +7,31 @@ function makeForm($form) {
     if ($form === 'loginForm-body') {
         $class = 'loginForm-body';
     }
-    $loginForm = '<div class="' . $class . '">
-        <form action="includes/login.php" method="POST">
-        <label for="username">Username</label>
-        <input placeholder="Username" type="text" name="username" id="username" value="username">
-
-        <label for="pass">Password</label>
-        <input placeholder="Password" type="password" name="favourite" id="fav" value="password">
-
-        <input class="admin-btn" type="submit" name="submitdetails" value="login">
-        </form>';
-
     // Login template for form-body
+    $loginForm = '
+    <div class="' . $class . '">
+        <form action="includes/login.php" method="post">
+            <label for="user">Username</label>
+            <input type="text" name="uname" id="user" placeholder="Username" autocomplete="username">
+
+            <label for="pwd">Password</label>
+            <input type="password" name="pass" id="pwd" placeholder="Password" autocomplete="current-password">
+
+            <button type="submit" name="login-submit" class="admin-btn">Login</button>
+        </form>
+
+        <a href="signup.php">Signup</a>
+
+        <form action="includes/logout.php" method="post">
+            <button type="submit" name="logout-submit" class="admin-btn">Logout</button>
+        </form>
+    </div>';
 
     if ($form === 'loginForm-header') {
-        $class = 'loginForm-header';
         return $loginForm;
     } elseif ($form === 'loginForm-body') {
-        $class = 'loginForm-body';
         return $loginForm;
     } else {
-        $class = 'loginForm-body';
         return $form;
     }
 };
@@ -49,6 +53,7 @@ function displayBody($data) {
     fclose($handle);
 };
 
+// TODO remove function not in use.
 function getExtension() {
     # Initialization.
     // Define arrays to hold data from each file.
@@ -74,16 +79,3 @@ function getExtension() {
     }
     fclose($handle);
 }
-
-// FIXME function to try stuff. DELETE IN THE END
-function bodyTest($data) {
-
-    $handle = fopen($data, 'r') or die('Failed to open the file');
-
-    while (!feof($handle)) { // While is not the end of the file.
-        $name = fgets($handle); // Get the content of the page until EOL.
-        return $name;
-    }
-    fclose($handle);
-};
-// displayBodyTest($data);

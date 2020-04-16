@@ -14,7 +14,6 @@ echo '
 
 <body>
     <div class="main-wrapper">
-
         <header class="header-bar">
             <a href="index.php"><img class="logo" src="img/logo.svg" alt="DCS Logo"></a>
             <span>Computer Science Department</span>
@@ -26,8 +25,8 @@ echo '
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="services.php">Services</a></li>
-                <li><a href="login.php">Intranet</a></li>
+                <li><a href="intranet.php">Intranet</a></li>
             </ul>
         </nav>';
-
+// TODO Check if signup goes inside of the header.
 // TODO Cite all DCS content used on the paragraph.
