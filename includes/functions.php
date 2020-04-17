@@ -10,7 +10,7 @@ function makeForm($form) {
     // Login template for form-body
     $loginForm = '
     <div class="' . $class . '">
-        <form action="includes/login.php" method="post">
+        <form action="includes/login.inc.php" method="post">
             <label for="user">Username</label>
             <input type="text" name="uname" id="user" placeholder="Username" autocomplete="username">
 

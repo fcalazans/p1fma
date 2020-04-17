@@ -2,11 +2,11 @@
     require_once 'includes/functions.php';
     $title = 'Signup';
     include 'includes/header.php';
-    makeHeading($title, 1);
 ?>
 <main>
     <div class="main-frame">
         <section>
+            <?php makeHeading($title, 1);?>
             <hr />
             <br>
             <form action="includes/signup.inc.php" method="post">
@@ -46,8 +46,7 @@
         </section>
     </div>
 </main>
-
-
+<!-- Footer -->
 <?php
 require 'includes/footer.php';
 ?>

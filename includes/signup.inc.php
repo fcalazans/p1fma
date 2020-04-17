@@ -9,6 +9,11 @@ if (isset($_POST['signup-submit'])) {
     $password = $_POST['pass'];
     $passwordRepeat = $_POST['pass-repeat'];
 
+    /*
+    Form error handlers start.
+     */
+
+    // Check for empty fields.
     if (empty($title)
         || empty($fname)
         || empty($lname)
@@ -16,9 +21,28 @@ if (isset($_POST['signup-submit'])) {
         || empty($username)
         || empty($password)
         || empty($passwordRepeat)) {
-        header("Location: ../signup.php?error=emptyfields&title=" . $title . "&fname=" . $fname . "&lname=" . $lname . "&mail=" . $mail . "&uname=" . $username);
+
+        header("Location: ../signup.php?error=emptyfields&title=" . $title .
+            "&fname=" . $fname .
+            "&lname=" . $lname .
+            "&mail=" . $mail .
+            "&uname=" . $username);
         exit();
-    } // TODO create here the validation for email with elseif repeating header()
+    }
+    if ($password !== $passwordRepeat) {
+
+        header("Location: ../signup.php?error=passwordnotmatch&title=" . $title .
+            "&fname=" . $fname .
+            "&lname=" . $lname .
+            "&mail=" . $mail .
+            "&uname=" . $username);
+        exit();
+    }
+    /*
+    End of form error handlers.
+     */
+
+    // TODO create here the validation for email with elseif repeating header()
     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
     $data = $title . ',' .
@@ -26,9 +50,9 @@ if (isset($_POST['signup-submit'])) {
         $lname . ',' .
         $mail . ',' .
         $username . ',' .
-        $hashedPwd . ',' . PHP_EOL;
+        $hashedPwd . PHP_EOL;
 
-    $handle = fopen('../data/form-data.txt', 'a+');
+    $handle = fopen('../data/form-data.txt', 'a');
     $result = fwrite($handle, $data);
     if ($result === false) {
         header("Location: ../signup.php?signup=error");
