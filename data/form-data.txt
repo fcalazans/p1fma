@@ -1,0 +1,4 @@
+mr,Name Test,Test,testuser@user.com,user,$2y$10$E14.snTdb639dQHvwBrzjeIE0CMnLbl6fiG2NYbVdfKh8jadjhpca
+miss,paula,ruiz,paula@paula.com,pau123,$2y$10$WZtVMNtmQel7NhJwLUruWup90Ws6MRF25nN/8u89otKORmbU1WXRO
+mrs,Fabio,Silveira,calazansbartender@hotmail.com,fc14,$2y$10$vcP1RPWb7Z5vBf9M0iQjEeb7Lfn7hQ7Zrb/KDJaQ0MV9577iMLKP2
+other,John,Dough,jdough@user.com,user,$2y$10$lYl17pmx1teSrjpQ.NyBrO82SnaptQylp5ivJT8PSc2s1NsHHMrE2

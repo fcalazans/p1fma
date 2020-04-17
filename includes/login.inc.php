@@ -1,9 +1,9 @@
 <?php
 if (isset($_POST['login-submit'])) {
-    $username = $_POST['uname'];
+    $userTyped = $_POST['uname'];
     $passTyped = $_POST['pass'];
 
-    if (empty($username) || empty($passTyped)) { // Error handling for empty fields.
+    if (empty($userTyped) || empty($passTyped)) { // Error handling for empty fields.
         header("Location: ../login.php?error=emptyfields");
         exit();
 
@@ -26,31 +26,31 @@ if (isset($_POST['login-submit'])) {
                 $data = fgetcsv($handle);
 
                 if (!$data === false && array(null) !== $data) {
-                    $formData[] = $data;
+
+                    $formData[] = array(
+                        'title' => $data[0],
+                        'fname' => $data[1],
+                        'surname' => $data[2],
+                        'mail' => $data[3],
+                        'uname' => $data[4],
+                        'pass' => $data[5]);
                 }
             }
             fclose($handle);
         }
-        $userTemp = array();
-        foreach ($formData as $item) {
-            $userTemp[] = $item[4];
-            $passTemp[] = $item[5];
-
+// ||
+        foreach ($formData as $database) {
+            if ($userTyped == $database['uname'] && $pwdCheck = password_verify($passTyped, $database['pass'])) {
+                // header("Location: ../login.php?error=nouser");
+                // exit();
+                var_dump($pwdCheck);
+            } else {
+                var_dump($pwdCheck);
+            }
         }
-        var_dump($userTemp); // TODO improve!!!
-        var_dump($passTemp); // TODO improve!!!
-
         var_dump($formData); // TODO improve!!!
-        var_dump($username); // TODO improve!!!
-        var_dump($passTyped); // TODO improve!!!
-        // if ($result === false) {
-        //     header("Location: ../login.php?login=error");
-        //     exit();
-        // } else {
-        //     header("Location: ../login.php?login=success");
-        //     exit();
-        // }
-
+        var_dump($userTyped);
+        var_dump($passTyped);
     }
 
 } else {
