@@ -38,19 +38,24 @@ if (isset($_POST['login-submit'])) {
             }
             fclose($handle);
         }
-// ||
+        $userFound = false;
         foreach ($formData as $database) {
-            if ($userTyped == $database['uname'] && $pwdCheck = password_verify($passTyped, $database['pass'])) {
-                // header("Location: ../login.php?error=nouser");
-                // exit();
-                var_dump($pwdCheck);
-            } else {
-                var_dump($pwdCheck);
+            if ($pwdCheck = password_verify($passTyped, $database['pass']) && $userTyped == $database['uname']) {
+                $userFound = true;
             }
         }
-        var_dump($formData); // TODO improve!!!
+
+        if ($userFound == false) {
+            header("Location: ../login.php?error=nouser");
+            exit();
+        } else {
+            echo "USER FOUND and Password match";
+        }
+        // var_dump($formData); // TODO improve!!!
         var_dump($userTyped);
         var_dump($passTyped);
+        var_dump($formData);
+
     }
 
 } else {
