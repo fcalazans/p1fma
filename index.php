@@ -1,12 +1,21 @@
 <?php
     require_once 'includes/functions.php';
     $title = 'Home';
+
     require 'includes/header.php';
 ?>
 
 <main>
     <div class="main-frame">
         <section>
+            <?php
+                if (isset($_SESSION['username'])) {
+                    echo '<p class= "login-status">You are logged in!</p>';
+                } else {
+                    echo '<p class= "login-status">You are logged out!</p>';
+                }
+
+            ?>
             <?php makeHeading($title, 1);?>
             <hr />
             <br>

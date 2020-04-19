@@ -1,9 +1,12 @@
 <?php
     require_once 'includes/functions.php';
+    // include 'includes/login.inc.php';
     $title = 'Login';
     include 'includes/header.php';
-    $login = makeForm("loginForm-header");
+    $login = makeForm("loginForm-body");
+
 ?>
+
 
 <main>
     <div class="main-frame">

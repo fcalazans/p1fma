@@ -38,9 +38,18 @@ if (isset($_POST['login-submit'])) {
             }
             fclose($handle);
         }
+
         $userFound = false;
+        $adminOn = false; // TODO implement admin is on.
         foreach ($formData as $database) {
             if ($pwdCheck = password_verify($passTyped, $database['pass']) && $userTyped == $database['uname']) {
+                $userSession = array(
+                    'title' => $database['title'],
+                    'firstname' => $database['fname'],
+                    'lastname' => $database['surname'],
+                    'username' => $database['uname'],
+                    'email' => $database['mail'],
+                );
                 $userFound = true;
             }
         }
@@ -49,13 +58,17 @@ if (isset($_POST['login-submit'])) {
             header("Location: ../login.php?error=nouser");
             exit();
         } else {
-            echo "USER FOUND and Password match";
+            session_start();
+            $_SESSION['title'] = $userSession['title'];
+            $_SESSION['firstname'] = $userSession['firstname'];
+            $_SESSION['lastname'] = $userSession['lastname'];
+            $_SESSION['username'] = $userSession['username'];
+            $_SESSION['email'] = $userSession['email'];
+
+            header("Location: ../index.php?login=success");
+            exit();
         }
         // var_dump($formData); // TODO improve!!!
-        var_dump($userTyped);
-        var_dump($passTyped);
-        var_dump($formData);
-
     }
 
 } else {

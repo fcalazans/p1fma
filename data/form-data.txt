@@ -1,0 +1,3 @@
+other,Administrator,administrator,admin@admin.com,admin,$2y$10$/eLHg8n4gq7IBBwnGwyZjune.cn6GOlpmwsHFUteabCFxL2deLZ8O
+mr,Name Test,Test,testuser@user.com,user,$2y$10$1VNiAy6AA6gk3jqFqN6bUOHuh/f8au3Oy6I4eL5hN4/PMUTz3RuaK
+miss,Paula,ruiz,user@user.com,pau,$2y$10$pvpWpKI.sbeTFfhzf3Blc.L1xFnQrQwmMpV7fYJv4PU029RIXvtRq

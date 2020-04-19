@@ -1,5 +1,6 @@
 <?php
-$login = makeForm("loginForm-header");
+session_start();
+$loginHeader = makeForm("loginForm-header");
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ echo '
         <header class="header-bar">
             <a href="index.php"><img class="logo" src="img/logo.svg" alt="DCS Logo"></a>
             <span>Computer Science Department</span>
-            ' . $login . '
+            ' . $loginHeader . '
         </header>
         <nav class="main-nav">
             <ul>
@@ -25,8 +26,10 @@ echo '
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="services.php">Services</a></li>
-                <li><a href="signup.php">Intranet</a></li>
+                <li><a href="login.php">Intranet</a></li>
+                <li><a href="signup.php">Admin</a></li>
             </ul>
         </nav>';
 // TODO Check if signup goes inside of the header.
-// TODO Cite all DCS content used on the paragraph.
+// TODO Cite all DCS content used on the paragraphs.
+// TODO Remove Intranet from menu if admin is in.

@@ -10,7 +10,7 @@ if (isset($_POST['signup-submit'])) {
     $passwordRepeat = $_POST['pass-repeat'];
 
     /*
-    Form error handlers start.
+    Form Validation starts.
      */
 
     // Check for empty fields.
@@ -21,16 +21,22 @@ if (isset($_POST['signup-submit'])) {
         || empty($username)
         || empty($password)
         || empty($passwordRepeat)) {
-
         header("Location: ../signup.php?error=emptyfields&title=" . $title .
             "&fname=" . $fname .
             "&lname=" . $lname .
             "&mail=" . $mail .
             "&uname=" . $username);
         exit();
-    }
-    if ($password !== $passwordRepeat) {
 
+    } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        header("Location: ../signup.php?error=invalidemail&title=" . $title .
+            "&fname=" . $fname .
+            "&lname=" . $lname .
+            "&mail=" . $mail .
+            "&uname=" . $username);
+        exit();
+
+    } else if ($password !== $passwordRepeat) {
         header("Location: ../signup.php?error=passwordnotmatch&title=" . $title .
             "&fname=" . $fname .
             "&lname=" . $lname .
@@ -38,6 +44,7 @@ if (isset($_POST['signup-submit'])) {
             "&uname=" . $username);
         exit();
     }
+
     /*
     End of form error handlers.
      */

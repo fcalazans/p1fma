@@ -2,38 +2,60 @@
 
 // Function that generate a form according to the parameter passed.
 function makeForm($form) {
-
+    $errorUser = '';
+    $errorPass = '';
     $class = 'loginForm-header'; // Change the class on CSS.
     if ($form === 'loginForm-body') {
         $class = 'loginForm-body';
     }
+    if (isset($_SESSION['firstname'])) {
+        $name = $_SESSION['firstname'];
+    }
+    // $self = htmlentities($_SERVER['PHP_SELF']);
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == 'nouser' && $class == 'loginForm-body') {
+            $errorUser = '<span>User not found</span>';
+        } elseif ($_GET['error'] == 'emptyfields' && $class == 'loginForm-body') {
+            $errorUser = '<span>All fields are required</span>';
+            $errorPass = '<span>All fields are required</span>';
+        }
+
+    }
+
     // Login template for form-body
-    $loginForm = '
-    <div class="' . $class . '">
+
+    if (isset($_SESSION['username'])) {
+        $loginForm = '
+        <span class= "login-status" id="header-login-status" >Hi ' . $name . ', you are logged in!</span>
+        <div class="' . $class . '">
+        <form action="includes/logout.inc.php" method="post">
+            <button type="submit" name="logout-submit" class="admin-btn">Logout</button>
+        </form>
+        </div>';
+    } else {
+        $loginForm = '
+        <div class="' . $class . '">
+
         <form action="includes/login.inc.php" method="post">
             <label for="user">Username</label>
-            <input type="text" name="uname" id="user" placeholder="Username" autocomplete="username">
+            <input type="text" name="uname" id="user" placeholder="Username" autocomplete="username">' . $errorUser . '
 
             <label for="pwd">Password</label>
-            <input type="password" name="pass" id="pwd" placeholder="Password" autocomplete="current-password">
+            <input type="password" name="pass" id="pwd" placeholder="Password" autocomplete="current-password">' . $errorPass . '
 
             <button type="submit" name="login-submit" class="admin-btn">Login</button>
         </form>
+        </div>';
+    }
 
-        <a href="signup.php">Signup</a>
-
-        <form action="includes/logout.php" method="post">
-            <button type="submit" name="logout-submit" class="admin-btn">Logout</button>
-        </form>
-    </div>';
-
-    if ($form === 'loginForm-header') {
+    if ($form === 'loginForm-body') {
         return $loginForm;
-    } elseif ($form === 'loginForm-body') {
+    } elseif ($form === 'loginForm-header') {
         return $loginForm;
     } else {
         return $form;
     }
+
 };
 
 // Function that take a 2 parameters and return H tag.
@@ -79,3 +101,7 @@ function getExtension() {
     }
     fclose($handle);
 }
+
+/*
+<a href="signup.php">Signup</a>
+ */

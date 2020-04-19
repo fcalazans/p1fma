@@ -15,7 +15,7 @@
             <hr />
             <br>
             <?php makeHeading('Module Results', 2)?>
-            <span>Welcome<?php echo " $user " ?> You are logged in.</span>
+            <span>Welcome<?php echo " " . $user . " " ?> You are logged in.</span>
             <div class="links">
                 <a href="?php=true">Web Programming using PHP - P1 Results</a>
                 <a href="?dt=true">Introduction to Database Technology - DT Results</a>
