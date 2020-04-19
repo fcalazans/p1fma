@@ -1,10 +1,11 @@
 <?php
 session_start();
-if (isset($_POST['logout-submit'])) { #delete session button pressed
+if (isset($_POST['logout-submit'])) {
 // session_start();
     session_unset();
     session_destroy();
-    header('Location: ' . $_SERVER['PHP_SELF']);
+    header("Location: ../index.php?logout=success");
+    exit();
 }
 
 $loginHeader = makeForm("loginForm-header");

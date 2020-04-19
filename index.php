@@ -8,15 +8,14 @@
 <main>
     <div class="main-frame">
         <section>
-            <?php
-                if (isset($_SESSION['username'])) {
-                    echo '<p class= "login-status">You are logged in!</p>';
-                } else {
-                    echo '<p class= "login-status">You are logged out!</p>';
-                }
+            <?php makeHeading($title, 1);?><?php
+    if (isset($_SESSION['username'])) {
+        echo '<span class= "login-status">You are logged in!</span>';
+    } else {
+        echo '<span class= "login-status">You have been logged out!</span>';
+    }
 
-            ?>
-            <?php makeHeading($title, 1);?>
+?>
             <hr />
             <br>
             <p>

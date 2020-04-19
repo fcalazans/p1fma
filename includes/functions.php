@@ -23,14 +23,14 @@ function makeForm($form) {
 
     }
 
-    // Login template for form-body
+    // Form template in header.
 
     if (isset($_SESSION['username'])) {
         $self = htmlentities($_SERVER['PHP_SELF']);
         $loginForm = '
         <span class= "login-status" id="header-login-status" >Hi ' . $name . ', you are logged in!</span>
         <div class="' . $class . '">
-        <form action="' . $self . '" method="post">
+        <form action="includes/header.php" method="post">
             <button type="submit" name="logout-submit" class="admin-btn">Logout</button>
         </form>
         </div>';

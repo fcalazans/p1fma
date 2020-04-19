@@ -118,7 +118,8 @@ Header-Top
 .main-frame {
   padding: 1em 2em;
 }
-.main-frame h2 {
+.main-frame h1,
+h2 {
   display: inline;
   margin-right: 1em;
 }
