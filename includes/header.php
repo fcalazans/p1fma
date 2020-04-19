@@ -1,5 +1,12 @@
 <?php
 session_start();
+if (isset($_POST['logout-submit'])) { #delete session button pressed
+// session_start();
+    session_unset();
+    session_destroy();
+    header('Location: ' . $_SERVER['PHP_SELF']);
+}
+
 $loginHeader = makeForm("loginForm-header");
 echo '
 <!DOCTYPE html>
@@ -30,6 +37,6 @@ echo '
                 <li><a href="signup.php">Admin</a></li>
             </ul>
         </nav>';
-// TODO Check if signup goes inside of the header.
+
 // TODO Cite all DCS content used on the paragraphs.
 // TODO Remove Intranet from menu if admin is in.

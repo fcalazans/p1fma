@@ -4,7 +4,7 @@ if (isset($_POST['login-submit'])) {
     $passTyped = $_POST['pass'];
 
     if (empty($userTyped) || empty($passTyped)) { // Error handling for empty fields.
-        header("Location: ../login.php?error=emptyfields");
+        header("Location: ../login.php?error=emptyfields&uname=" . $userTyped);
         exit();
 
     } else { // Perform the task without error.
@@ -55,7 +55,7 @@ if (isset($_POST['login-submit'])) {
         }
 
         if ($userFound == false) {
-            header("Location: ../login.php?error=nouser");
+            header("Location: ../login.php?error=nouser&uname=" . $userTyped);
             exit();
         } else {
             session_start();

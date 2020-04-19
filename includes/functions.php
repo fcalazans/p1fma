@@ -5,6 +5,7 @@ function makeForm($form) {
     $errorUser = '';
     $errorPass = '';
     $class = 'loginForm-header'; // Change the class on CSS.
+
     if ($form === 'loginForm-body') {
         $class = 'loginForm-body';
     }
@@ -25,10 +26,11 @@ function makeForm($form) {
     // Login template for form-body
 
     if (isset($_SESSION['username'])) {
+        $self = htmlentities($_SERVER['PHP_SELF']);
         $loginForm = '
         <span class= "login-status" id="header-login-status" >Hi ' . $name . ', you are logged in!</span>
         <div class="' . $class . '">
-        <form action="includes/logout.inc.php" method="post">
+        <form action="' . $self . '" method="post">
             <button type="submit" name="logout-submit" class="admin-btn">Logout</button>
         </form>
         </div>';
