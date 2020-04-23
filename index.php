@@ -8,7 +8,8 @@
 <main>
     <div class="main-frame">
         <section>
-            <?php makeHeading($title, 1);?><?php
+            <?php makeHeading($title, 1);?>
+            <?php
     if (isset($_SESSION['username'])) {
         echo '<span class= "login-status">You are logged in!</span>';
     } else {
