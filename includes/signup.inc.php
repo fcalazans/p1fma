@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['signup-submit'])) {
 
+    // Information typed by the user in the form.
     $title = $_POST['title'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];

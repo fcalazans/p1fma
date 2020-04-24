@@ -12,6 +12,7 @@ function makeForm($form) {
     if (isset($_SESSION['firstname'])) {
         $name = $_SESSION['firstname'];
     }
+
     // $self = htmlentities($_SERVER['PHP_SELF']);
     if (isset($_GET['error'])) {
         if ($_GET['error'] == 'nouser' && $class == 'loginForm-body') {
@@ -20,7 +21,6 @@ function makeForm($form) {
             $errorUser = '<span>All fields are required</span>';
             $errorPass = '<span>All fields are required</span>';
         }
-
     }
 
     // Form template in header.
@@ -60,7 +60,7 @@ function makeForm($form) {
 
 };
 
-// Function that take a 2 parameters and return H tag.
+// Function that take a 2 parameters and return H tag. (Ian Holl)
 function makeHeading($str, $num) {
     echo "<h" . $num . ">" . $str . "</h" . $num . ">";
 };
@@ -76,34 +76,3 @@ function displayBody($data) {
     }
     fclose($handle);
 };
-
-// TODO remove function not in use.
-function getExtension() {
-    # Initialization.
-    // Define arrays to hold data from each file.
-    $fileNames = array();
-    $files = array();
-
-    // Create a handle
-    $handle = opendir('data');
-
-    // Open directory and read contents.
-    while (false !== ($file = readdir($handle))) {
-        // Check if file extension is valid to read
-        if (is_file('data/' . $file)) {
-            $path_extension = pathinfo($file);
-            if ($path_extension['extension'] != 'html') {
-                echo "<p>data $file : INVALID FILE EXTENSION- should be .txt</p>";
-            }
-            if ($path_extension['extension'] == 'html') {
-                $fileNames[] = pathinfo($file, PATHINFO_FILENAME);
-                $files[] = $file;
-            }
-        }
-    }
-    fclose($handle);
-}
-
-/*
-<a href="signup.php">Signup</a>
- */
