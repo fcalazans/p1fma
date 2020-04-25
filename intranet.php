@@ -4,12 +4,11 @@
     $php = 'data/P1results.php';
     $dt = 'data/DTresults.php';
     $pfp = 'data/PfPresults.php';
-    $user = '';
 ?>
 
 <!-- Main body -->
 <?php makeHeading('Module Results', 2)?>
-<span>Welcome<?php echo " " . $user . " " ?> You are logged in.</span>
+
 <div class="links">
     <a href="?php=true">Web Programming using PHP - P1 Results</a>
     <a href="?dt=true">Introduction to Database Technology - DT Results</a>

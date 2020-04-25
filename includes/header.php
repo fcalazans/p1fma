@@ -46,9 +46,16 @@
 
     // TODO change the way login message appears.($_GET from header(Location:))
     if (isset($_SESSION['username'])) {
-        $loginStatus = '<span class= "login-status">You are logged in!</span>';
+        $user = $_SESSION['firstname'];
+        $loginStatus = '<span class= "login-status">Welcome! ' . $user . '</span>';
     } else {
-        $loginStatus = '<span class= "login-status">You have been logged out!</span>';
+        $user = '';
+        if (isset($_GET['logout'])) {
+            if ($_GET['logout'] == 'success') {
+                $loginStatus = '<span class= "login-status">You have been logged out!</span>';
+            }
+        }
+        $loginStatus = '<span class= "login-status"></span>';
     }
     makeHeading($title, 1);
     echo $loginStatus;

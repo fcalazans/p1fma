@@ -3,12 +3,20 @@ if (isset($_POST['signup-submit'])) {
 
     // Information typed by the user in the form.
     $title = $_POST['title'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $mail = $_POST['mail'];
-    $username = $_POST['uname'];
-    $password = $_POST['pass'];
-    $passwordRepeat = $_POST['pass-repeat'];
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $mail = trim($_POST['mail']);
+    $username = trim($_POST['uname']);
+    $password = trim($_POST['pass']);
+    $passwordRepeat = trim($_POST['pass-repeat']);
+
+    /*
+    Form Sanitization starts.
+     */
+    $fname = ucwords(strtolower($fname));
+    $lname = ucwords(strtolower($lname));
+    $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+    $username = strtolower($username);
 
     /*
     Form Validation starts.
@@ -22,27 +30,43 @@ if (isset($_POST['signup-submit'])) {
         || empty($username)
         || empty($password)
         || empty($passwordRepeat)) {
-        header("Location: ../signup.php?error=emptyfields&title=" . $title .
-            "&fname=" . $fname .
-            "&lname=" . $lname .
-            "&mail=" . $mail .
-            "&uname=" . $username);
+        header("Location: ../signup.php?error=emptyfields&title=" . htmlentities($title) .
+            "&fname=" . htmlentities($fname) .
+            "&lname=" . htmlentities($lname) .
+            "&mail=" . htmlentities($mail) .
+            "&uname=" . htmlentities($username));
         exit();
-
+// Check for a valid email.
     } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../signup.php?error=invalidemail&title=" . $title .
-            "&fname=" . $fname .
-            "&lname=" . $lname .
-            "&mail=" . $mail .
-            "&uname=" . $username);
+        header("Location: ../signup.php?error=invalidemail&title=" . htmlentities($title) .
+            "&fname=" . htmlentities($fname) .
+            "&lname=" . htmlentities($lname) .
+            "&mail=" . htmlentities($mail) .
+            "&uname=" . htmlentities($username));
         exit();
 
+// Check if the passwords match.
     } else if ($password !== $passwordRepeat) {
-        header("Location: ../signup.php?error=passwordnotmatch&title=" . $title .
-            "&fname=" . $fname .
-            "&lname=" . $lname .
-            "&mail=" . $mail .
-            "&uname=" . $username);
+        header("Location: ../signup.php?error=passwordnotmatch&title=" . htmlentities($title) .
+            "&fname=" . htmlentities($fname) .
+            "&lname=" . htmlentities($lname) .
+            "&mail=" . htmlentities($mail) .
+            "&uname=" . htmlentities($username));
+        exit();
+
+    } else if (!ctype_alpha(str_replace(' ', '', $fname)) || !ctype_alpha(str_replace(' ', '', $lname))) {
+        header("Location: ../signup.php?error=nameinvalid&title=" . htmlentities($title) .
+            "&fname=" . htmlentities($fname) .
+            "&lname=" . htmlentities($lname) .
+            "&mail=" . htmlentities($mail) .
+            "&uname=" . htmlentities($username));
+        exit();
+    } else if (!ctype_alnum($username)) {
+        header("Location: ../signup.php?error=userinvalid&title=" . htmlentities($title) .
+            "&fname=" . htmlentities($fname) .
+            "&lname=" . htmlentities($lname) .
+            "&mail=" . htmlentities($mail) .
+            "&uname=" . htmlentities($username));
         exit();
     }
 
@@ -73,6 +97,6 @@ if (isset($_POST['signup-submit'])) {
     fclose($handle);
 
 } else {
-    header("Location: ../signup.php"); // HACK This is how not allow user to access to this page by typing in the address bar.
+    header("Location: ../signup.php");
     exit();
 }
