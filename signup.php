@@ -105,5 +105,4 @@
 </div>
 
 <!-- Footer -->
-<!-- http://localhost/p1fma/signup.php?error=emptyfields&title=&fname=&lname=&mail=&uname= -->
 <?php require 'includes/footer.php';?>

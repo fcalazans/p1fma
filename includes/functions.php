@@ -1,5 +1,8 @@
 <?php
-// Function generates a login form according to the parameter passed.
+/*
+Function generates a login form according to the parameter passed.
+it take the name of the form wanted to be generated as a parameter and it returns desirable form.
+ */
 function makeForm($form) {
     if (isset($_SESSION['firstname'])) {
         $name = $_SESSION['firstname'];
@@ -32,7 +35,7 @@ function makeForm($form) {
     // Form template in header.
 
     if (isset($_SESSION['username'])) {
-        // $self = htmlentities($_SERVER['PHP_SELF']);
+
         $loginForm = $spanStatus . '
         <div class="' . $class . '">
         <form action="includes/header.php" method="post">
@@ -65,7 +68,7 @@ function makeForm($form) {
     }
 };
 
-// Function that take a 2 parameters and return H tag. citation(Ian Hollender)
+// Function that take a 2 parameters and return H tag. (Ian Hollender).
 function makeHeading($str, $num) {
     echo "<h" . $num . ">" . $str . "</h" . $num . ">";
 };

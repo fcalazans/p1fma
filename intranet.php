@@ -16,7 +16,6 @@
 </div>
 
 <?php
-    // TODO change the way login message appears.($_GET from header(Location:))
     if (isset($_SESSION['username'])) {
 
         // Display the module results.
@@ -33,10 +32,6 @@
         header("Location: login.php");
         exit();
     }
-
-    // TODO Change all include (header and footer) change for require.
-    // TODO Include semantic <main> tag on all pages that need to interact with body.
-    // TODO Remove all unnecessary code.
 ?>
 
 <!-- Footer -->

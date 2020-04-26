@@ -14,6 +14,7 @@
     and pervasive technologies, computational intelligence and information systems
     development.
 </p>
+<!-- Text by DCS Department of Computer Science and Information Systems at Birkbeck https://www.dcs.bbk.ac.uk/  -->
 
 <!-- Footer -->
 <?php require 'includes/footer.php';?>

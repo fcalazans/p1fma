@@ -11,6 +11,7 @@
 <p>Short Courses and Certificates</p>
 <p>Modules</p>
 <p>Fees</p>
+<!-- Text by DCS Department of Computer Science and Information Systems at Birkbeck https://www.dcs.bbk.ac.uk/  -->
 
 <!-- Footer -->
 <?php require 'includes/footer.php';?>
