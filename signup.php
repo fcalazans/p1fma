@@ -6,7 +6,7 @@
     $message = $errorPass = $errorTitle = $errorUser = $errorlname = $errorfname = $errorEmail = '<span></span>';
 
     if (!isset($_SESSION['username'])) {
-        header("Location: login.php");
+        header("Location: login.php?error=notadmin");
         exit();
     } else if ($_SESSION['username'] != 'admin') {
         header("Location: login.php?error=notadmin");

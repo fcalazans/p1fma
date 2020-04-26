@@ -1,10 +1,13 @@
 <?php
 if (isset($_POST['login-submit'])) {
-    $userTyped = $_POST['uname'];
-    $passTyped = $_POST['pass'];
+    $userTyped = trim($_POST['uname']);
+    $passTyped = trim($_POST['pass']);
+
+    $userTyped = htmlentities($userTyped);
+    $passTyped = htmlentities($passTyped);
 
     if (empty($userTyped) || empty($passTyped)) { // Error handling for empty fields.
-        header("Location: ../login.php?error=emptyfields&uname=" . $userTyped);
+        header("Location: ../login.php?error=emptyfields&uname=" . htmlentities($userTyped));
         exit();
 
     } else { // Perform the task without error.
@@ -39,7 +42,7 @@ if (isset($_POST['login-submit'])) {
             fclose($handle);
         }
 
-        $userFound = false;
+        $userFound = false; // Initializing $userFound (default value false).
         $adminOn = false; // TODO implement admin is on.
         foreach ($formData as $database) {
             if ($pwdCheck = password_verify($passTyped, $database['pass']) && $userTyped == $database['uname']) {

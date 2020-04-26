@@ -1,10 +1,14 @@
 <?php
 $title = 'Login';
 include 'includes/header.php';
-// var_dump($_SESSION);
 
 // Main body
 $login = makeForm("loginForm-body");
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == 'notadmin') {
+        echo '<span>Login as Administrator to access Admin area.</span></br></br>';
+    }
+}
 echo $login;
 
 // Footer

@@ -36,7 +36,7 @@ if (isset($_POST['signup-submit'])) {
             "&mail=" . htmlentities($mail) .
             "&uname=" . htmlentities($username));
         exit();
-// Check for a valid email.
+        // Check for a valid email.
     } elseif (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
         header("Location: ../signup.php?error=invalidemail&title=" . htmlentities($title) .
             "&fname=" . htmlentities($fname) .
@@ -45,7 +45,7 @@ if (isset($_POST['signup-submit'])) {
             "&uname=" . htmlentities($username));
         exit();
 
-// Check if the passwords match.
+        // Check if the passwords match.
     } else if ($password !== $passwordRepeat) {
         header("Location: ../signup.php?error=passwordnotmatch&title=" . htmlentities($title) .
             "&fname=" . htmlentities($fname) .
@@ -54,6 +54,7 @@ if (isset($_POST['signup-submit'])) {
             "&uname=" . htmlentities($username));
         exit();
 
+        // Check if first and last name are alphabetic characters. (Valid names)
     } else if (!ctype_alpha(str_replace(' ', '', $fname)) || !ctype_alpha(str_replace(' ', '', $lname))) {
         header("Location: ../signup.php?error=nameinvalid&title=" . htmlentities($title) .
             "&fname=" . htmlentities($fname) .
@@ -61,6 +62,8 @@ if (isset($_POST['signup-submit'])) {
             "&mail=" . htmlentities($mail) .
             "&uname=" . htmlentities($username));
         exit();
+
+        // Check if username is alphanumerics. (Valid username)
     } else if (!ctype_alnum($username)) {
         header("Location: ../signup.php?error=userinvalid&title=" . htmlentities($title) .
             "&fname=" . htmlentities($fname) .
@@ -74,7 +77,7 @@ if (isset($_POST['signup-submit'])) {
     End of form error handlers.
      */
 
-    // TODO create here the validation for email with elseif repeating header()
+    // Hashing password before storing in the database.
     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
     $data = $title . ',' .
